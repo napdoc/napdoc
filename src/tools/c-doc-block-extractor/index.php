@@ -1,5 +1,6 @@
-#!/usr/bin/env php
 <?php
+
+require_once __DIR__."/../../../load-napphp.php";
 
 return function($file) {
 	$docBlockExctractor = require __DIR__."/src/index.php";
