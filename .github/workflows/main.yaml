@@ -27,5 +27,10 @@ jobs:
          mkdir -p /opt/nap-software/napphp/
          git clone --depth 1 --branch $NAPPHP_VERSION 'https://github.com/nap-software/napphp.git' /opt/nap-software/napphp/
 
+    - name: Install napphp-test-runner
+      run: |
+         mkdir -p /opt/nap-software/napphp-test-runner/
+         git clone --depth 1 'https://github.com/nap-software/napphp-test-runner.git' /opt/nap-software/napphp-test-runner/
+
     - name: Run CI-Script
       run: ./ci/run.php
