@@ -1,0 +1,31 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  NAPPHP_VERSION: v0.0.17
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Dependencies
+      run: |
+         sudo apt-get update
+         sudo apt install fakeroot-ng
+
+    - name: Install napphp
+      run: |
+         mkdir -p /opt/nap-software/napphp/
+         git clone --depth 1 --branch $NAPPHP_VERSION 'https://github.com/nap-software/napphp.git' /opt/nap-software/napphp/
+
+    - name: Run CI-Script
+      run: ./ci/run.php
