@@ -4,7 +4,10 @@
 return function($file) {
 	$docBlockExctractor = require __DIR__."/src/index.php";
 
-	$results = $docBlockExctractor($file);
+	$results = $docBlockExctractor(
+		napphp::fs_readFileString($file)
+	);
+
 	$ret = [];
 
 	foreach ($results as $result) {
